@@ -45,6 +45,9 @@ cd create-tailyew-app
 
 cargo build
 
+# install tailwindcss cli and server
+npm i
+
 # Start the dev server with hot reloads
 make hot-run
 ```
