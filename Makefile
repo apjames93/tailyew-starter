@@ -36,9 +36,12 @@ pretty: format lint
 # =======================================
 
 copy-tailyew:
-	@echo "🔁 Copying tailyew crate sources..."
+	@echo "🔁 Cleaning and copying tailyew crate sources..."
+	rm -rf ./vendor/tailyew
 	mkdir -p ./vendor/tailyew
-	cp -r ~/.cargo/registry/src/*/tailyew-0.1.0/src ./vendor/tailyew/
+	cp -r ~/.cargo/registry/src/*/tailyew-*/src ./vendor/tailyew/
+	cp ~/.cargo/registry/src/*/tailyew-*/tailyew-safelist.html ./vendor/tailyew/
+
 
 # Build Tailwind CSS into the static directory
 build-tailwind: copy-tailyew

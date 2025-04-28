@@ -5,7 +5,8 @@ module.exports = {
     './**/*.html',
     './js/**/*.js',
     './components/**/*.{html,js,rs}',
-    './vendor/tailyew/**/*.rs', // 👈 Copy of installed crate's source to apply classes we get this from the "make copy-tailyew"
+    './vendor/tailyew/**/*.rs', //👈 Copy TailYew source files here so Tailwind can detect classes (from "make copy-tailyew"
+    './vendor/tailyew/tailyew-safelist.html', // 👈 critical
   ],
   theme: {
     extend: {
@@ -62,5 +63,7 @@ module.exports = {
       },
     },
   },
+  // ✅ Safelist critical classes that might not exist during initial render
+  safelist: [],
   plugins: [],
 };
