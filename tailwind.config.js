@@ -1,12 +1,7 @@
 module.exports = {
   darkMode: 'class',
   content: [
-    './src/**/*.rs',
-    './**/*.html',
-    './js/**/*.js',
-    './components/**/*.{html,js,rs}',
-    './vendor/tailyew/**/*.rs', //👈 Copy TailYew source files here so Tailwind can detect classes (from "make copy-tailyew"
-    './vendor/tailyew/tailyew-safelist.html', // 👈 critical
+    './**/**/*.{html,js,rs}',
   ],
   theme: {
     extend: {
@@ -63,7 +58,6 @@ module.exports = {
       },
     },
   },
-  // ✅ Safelist critical classes that might not exist during initial render
   safelist: [],
   plugins: [],
 };

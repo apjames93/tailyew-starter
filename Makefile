@@ -36,11 +36,14 @@ pretty: format lint
 # =======================================
 
 copy-tailyew:
-	@echo "🔁 Cleaning and copying tailyew crate sources..."
-	rm -rf ./vendor/tailyew
-	mkdir -p ./vendor/tailyew
-	cp -r ~/.cargo/registry/src/*/tailyew-*/src ./vendor/tailyew/
-	cp ~/.cargo/registry/src/*/tailyew-*/tailyew-safelist.html ./vendor/tailyew/
+	@echo "🔁 Checking for local TailYew crate in Cargo registry..."
+	@if find ~/.cargo/registry/src/ -type d -path "*/tailyew-*/src" | grep -q .; then \
+		echo "📦 Found local TailYew source, copying..."; \
+		rm -rf ./static/tailyew-safelist.html; \
+		cp ~/.cargo/registry/src/*/tailyew-*/tailyew-safelist.html ./static/; \
+	else \
+		echo "⚠️ No TailYew source found in Cargo registry. Using existing ./static/tailyew..."; \
+	fi
 
 
 # Build Tailwind CSS into the static directory
